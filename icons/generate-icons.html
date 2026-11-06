@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate PWA Icons</title>
+    <style>
+        body { font-family: system-ui; max-width: 600px; margin: 2rem auto; padding: 1rem; }
+        .btn { display: block; width: 100%; padding: 1rem; font-size: 1.1rem; background: #ff6b9d; color: white; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 1rem; }
+        .btn:hover { background: #e85a87; }
+        .sizes { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem; margin-top: 1rem; }
+        .size-box { border: 2px dashed #ddd; padding: 1rem; text-align: center; border-radius: 8px; }
+        .size-box.ready { border-color: #4ecdc4; background: #f0fdfd; }
+        canvas { max-width: 100%; border: 1px solid #eee; border-radius: 4px; }
+        h1 { text-align: center; color: #ff6b9d; }
+        p { color: #666; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>🎂 Generate PWA Icons</h1>
+    <p>Click below to generate all required icon sizes from the SVG</p>
+    <button class="btn" id="generate-btn">Generate All Icons (8 sizes)</button>
+    <div class="sizes" id="sizes-container"></div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const container = document.getElementById('sizes-container');
+        const btn = document.getElementById('generate-btn');
+
+        // Create placeholder boxes
+        sizes.forEach(size => {
+            const box = document.createElement('div');
+            box.className = 'size-box';
+            box.id = `size-${size}`;
+            box.innerHTML = `<strong>${size}×${size}</strong><br><small>Pending</small>`;
+            container.appendChild(box);
+        });
+
+        async function generateIcons() {
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+
+            // Fetch the SVG
+            const svgResponse = await fetch('icon.svg');
+            const svgText = await svgResponse.text();
+
+            for (const size of sizes) {
+                const box = document.getElementById(`size-${size}`);
+                box.innerHTML = `<strong>${size}×${size}</strong><br><small>Generating...</small>`;
+
+                // Create canvas
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+
+                // Create image from SVG
+                const img = new Image();
+                const svgBlob = new Blob([svgText], { type: 'image/svg+xml' });
+                const url = URL.createObjectURL(svgBlob);
+
+                await new Promise((resolve, reject) => {
+                    img.onload = resolve;
+                    img.onerror = reject;
+                    img.src = url;
+                });
+
+                // Draw with white background
+                ctx.fillStyle = '#fff0f5';
+                ctx.fillRect(0, 0, size, size);
+                ctx.drawImage(img, 0, 0, size, size);
+
+                URL.revokeObjectURL(url);
+
+                // Convert to PNG and download
+                canvas.toBlob(blob => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = `icon-${size}.png`;
+                    a.click();
+                    URL.revokeObjectURL(a.href);
+
+                    box.className = 'size-box ready';
+                    box.innerHTML = `<strong>${size}×${size}</strong><br><small>✅ Ready</small>`;
+                    box.appendChild(canvas.cloneNode(true));
+                }, 'image/png');
+            }
+
+            btn.textContent = 'All Icons Generated! 🎉';
+            btn.style.background = '#4ecdc4';
+        }
+
+        btn.addEventListener('click', generateIcons);
+    </script>
+</body>
+</html>

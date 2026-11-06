@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#ff6b9d">
+    <meta name="description" content="Happy 3rd Birthday! A magical celebration website">
+    <title>🎂 Happy 3rd Birthday! 🎈</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+    <div class="page-wrapper">
+        <!-- Hero Section -->
+        <header class="hero" role="banner">
+            <div class="floating-elements" aria-hidden="true">
+                <span class="float-item" style="--i: 0">🎈</span>
+                <span class="float-item" style="--i: 1">🎁</span>
+                <span class="float-item" style="--i: 2">🧁</span>
+                <span class="float-item" style="--i: 3">🌈</span>
+                <span class="float-item" style="--i: 4">⭐</span>
+                <span class="float-item" style="--i: 5">🎂</span>
+                <span class="float-item" style="--i: 6">🦄</span>
+                <span class="float-item" style="--i: 7">🌟</span>
+            </div>
+
+            <h1 class="birthday-title">
+                <span class="title-line">Happy</span>
+                <span class="title-line age-line">
+                    <span class="age-number">3rd</span>
+                    Birthday!
+                </span>
+            </h1>
+
+            <p class="birthday-name">Zidhan ✨</p>
+
+            <button class="cta-button" id="celebrate-btn" aria-label="Start the celebration">
+                <span class="btn-text">🎉 Let's Celebrate! 🎉</span>
+                <span class="btn-sparkle" aria-hidden="true">✨</span>
+            </button>
+        </header>
+
+        <!-- Age Counter Section -->
+        <section class="age-counter" aria-labelledby="age-heading">
+            <h2 id="age-heading" class="section-title">I'm <span class="highlight">3</span> Years Old! 🎂</h2>
+            <div class="counter-grid">
+                <div class="counter-card">
+                    <span class="counter-number" data-target="3">0</span>
+                    <span class="counter-label">Years</span>
+                </div>
+                <div class="counter-card">
+                    <span class="counter-number" data-target="36">0</span>
+                    <span class="counter-label">Months</span>
+                </div>
+                <div class="counter-card">
+                    <span class="counter-number" data-target="1095">0</span>
+                    <span class="counter-label">Days</span>
+                </div>
+                <div class="counter-card">
+                    <span class="counter-number" data-target="26280">0</span>
+                    <span class="counter-label">Hours</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wishes Section -->
+        <section class="wishes" aria-labelledby="wishes-heading">
+            <h2 id="wishes-heading" class="section-title">Birthday Wishes 💖</h2>
+            <div class="wishes-carousel" id="wishes-carousel" role="region" aria-label="Birthday wishes">
+                <div class="wish-card active" data-wish="1">
+                    <div class="wish-icon">🌈</div>
+                    <p class="wish-text">May your day be filled with rainbows, laughter, and endless hugs!</p>
+                </div>
+                <div class="wish-card" data-wish="2">
+                    <div class="wish-icon">🦄</div>
+                    <p class="wish-text">You're more magical than a unicorn and sweeter than cotton candy!</p>
+                </div>
+                <div class="wish-card" data-wish="3">
+                    <div class="wish-icon">🚀</div>
+                    <p class="wish-text">Dream big, little astronaut! The universe is yours to explore!</p>
+                </div>
+                <div class="wish-card" data-wish="4">
+                    <div class="wish-icon">🎨</div>
+                    <p class="wish-text">Paint the world with your colors. You're a masterpiece in the making!</p>
+                </div>
+                <div class="wish-card" data-wish="5">
+                    <div class="wish-icon">🧸</div>
+                    <p class="wish-text">May your teddy bears always be fluffy and your blankets forever cozy!</p>
+                </div>
+                <div class="wish-card" data-wish="6">
+                    <div class="wish-icon">📚</div>
+                    <p class="wish-text">Every book opens a new adventure. Keep turning those pages!</p>
+                </div>
+            </div>
+            <div class="carousel-nav" aria-label="Navigate wishes">
+                <button class="nav-btn prev" id="prev-wish" aria-label="Previous wish">‹</button>
+                <div class="nav-dots" id="nav-dots" aria-label="Wish indicators"></div>
+                <button class="nav-btn next" id="next-wish" aria-label="Next wish">›</button>
+            </div>
+        </section>
+
+        <!-- Special Wish from Seethu -->
+        <section class="special-wish" aria-labelledby="special-wish-heading">
+            <div class="special-wish-card">
+                <div class="special-wish-icon">❤️</div>
+                <h3 class="special-wish-title">A Special Wish for Zidhan</h3>
+                <div class="special-wish-content">
+                    <p>Janmadina aashamsakal priyappetta Zidhan! Daivam ninakku nalla aarogyavum, santhoshavum, samruddhiyum jeevithathil ella vijayangalum nalkatte. Ninte jeevitham ennum snehavum samadhanavum daivaanugrahavum kondu nirayatte. Ennum punchirichukondu santhoshathode munnottu pokaan kazhiyatte.</p>
+                    <p class="special-wish-signature">Orupaadu sneham, priyappettavane! ❤️</p>
+                    <p class="special-wish-from">With lots of love, <strong>Seethu</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Wish from Ajju Mama -->
+        <section class="special-wish" aria-labelledby="special-wish-heading-2">
+            <div class="special-wish-card">
+                <div class="special-wish-icon">🎂</div>
+                <h3 class="special-wish-title">A Special Wish for Zidhan</h3>
+                <div class="special-wish-content">
+                    <p>🎂🎉 Happy 3rd Birthday to my adorable little Alludu! ❤️</p>
+                    <p>May your little world always be filled with endless smiles, cute giggles, lots of fun, and beautiful memories. Keep shining, keep smiling, and keep spreading happiness wherever you go. May God bless you with good health, happiness, and a wonderful future.</p>
+                    <p class="special-wish-signature">Lots of love and hugs to our little champ! 🥰💙🎈</p>
+                    <p class="special-wish-from">With love, <strong>Ajju Mama</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Cake Section -->
+        <section class="cake-section" aria-labelledby="cake-heading">
+            <h2 id="cake-heading" class="section-title">Blow Out the Candles! 🕯️</h2>
+            <div class="cake-container" id="cake-container" role="button" tabindex="0" aria-label="Birthday cake with 3 candles. Tap or press space to blow them out!">
+                <div class="cake-layers">
+                    <div class="cake-layer bottom"></div>
+                    <div class="cake-frosting"></div>
+                    <div class="cake-layer middle"></div>
+                    <div class="cake-frosting"></div>
+                    <div class="cake-layer top"></div>
+                </div>
+                <div class="candles" id="candles">
+                    <div class="candle" data-candle="1">
+                        <div class="candle-body"></div>
+                        <div class="flame" id="flame-1">
+                            <div class="flame-inner"></div>
+                            <div class="flame-glow"></div>
+                        </div>
+                    </div>
+                    <div class="candle" data-candle="2">
+                        <div class="candle-body"></div>
+                        <div class="flame" id="flame-2">
+                            <div class="flame-inner"></div>
+                            <div class="flame-glow"></div>
+                        </div>
+                    </div>
+                    <div class="candle" data-candle="3">
+                        <div class="candle-body"></div>
+                        <div class="flame" id="flame-3">
+                            <div class="flame-inner"></div>
+                            <div class="flame-glow"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cake-decorations" aria-hidden="true">
+                    <span class="sprinkle" style="--i: 0"></span>
+                    <span class="sprinkle" style="--i: 1"></span>
+                    <span class="sprinkle" style="--i: 2"></span>
+                    <span class="sprinkle" style="--i: 3"></span>
+                    <span class="sprinkle" style="--i: 4"></span>
+                    <span class="sprinkle" style="--i: 5"></span>
+                    <span class="sprinkle" style="--i: 6"></span>
+                    <span class="sprinkle" style="--i: 7"></span>
+                    <span class="sprinkle" style="--i: 8"></span>
+                    <span class="sprinkle" style="--i: 9"></span>
+                </div>
+            </div>
+            <p class="cake-instruction" id="cake-instruction">Tap the cake or press SPACE to blow! 💨</p>
+            <div class="celebration-message hidden" id="celebration-message">
+                <h3>🎉 Happy Birthday! 🎉</h3>
+                <p>Your wish has been sent to the stars! ⭐</p>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="gallery" aria-labelledby="gallery-heading">
+            <h2 id="gallery-heading" class="section-title">Memories 📸</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="gallery-item" tabindex="0" role="button" >
+                    <img src="1.jpg" alt="Baby's first smile" loading="lazy" class="gallery-image">
+                </div>
+                <div class="gallery-item" tabindex="0" role="button" aria-label="Photo 2: First steps">
+                    <img src="2.jpg" alt="Baby taking first steps" loading="lazy" class="gallery-image">
+                </div>
+                <div class="gallery-item" tabindex="0" role="button" aria-label="Photo 3: First birthday">
+                    <img src="3.jpg" alt="First birthday celebration" loading="lazy" class="gallery-image">
+                    
+                </div>
+                <div class="gallery-item" tabindex="0" role="button" aria-label="Photo 4: Second birthday">
+                    <img src="4.jpg" alt="Second birthday party" loading="lazy" class="gallery-image">
+                </div>
+                <div class="gallery-item" tabindex="0" role="button" aria-label="Photo 5: Playing in park">
+                    <img src="5.jpg" alt="Child playing in park" loading="lazy" class="gallery-image">
+                </div>
+                <div class="gallery-item" tabindex="0" role="button" aria-label="Photo 6: Family time">
+                    <img src="6.jpg" alt="Family time together" loading="lazy" class="gallery-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="footer-content">
+                <p class="footer-love">Made with 💕 for a very special 3-year-old</p>
+                <p class="footer-year">2026 • Happy Birthday! 🎂</p>
+                <div class="social-hearts" aria-hidden="true">
+                    <span>💖</span>
+                    <span>💖</span>
+                    <span>💖</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio for interactions -->
+    <audio id="pop-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+    </audio>
+    <audio id="cheer-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
